@@ -23,14 +23,19 @@ import java.util.LinkedList;
 @SessionAttributes(value = {"currentUser", "shoppingList"})
 public class LoginController {
 
-    @ModelAttribute(value = "currentUser")
-    @RequestMapping(value = {"/login.actoin"}, produces = {"charset=UTF-8"})
-    public User requarLogin(User user, Model model, HttpServletResponse httpServletResponse) throws ServletException, IOException {
+    //    @ModelAttribute(value = "currentUser")
+    @RequestMapping(value = {"login.actoin"}, produces = {"charset=UTF-8"})
+    public String requarLogin(User user, Model model, HttpServletResponse httpServletResponse) throws ServletException, IOException {
         System.out.println(user.getUname());
         System.out.println(user.getPwd());
         model.addAttribute("currentUser", user);
         model.addAttribute("shoppingList", new LinkedList<Food>());
-        httpServletResponse.sendRedirect("/book.jsp");
-        return user;
+//        httpServletResponse.sendRedirect("book.jsp");
+//        return "redirect:/book";
+        return "redirect:/panel";
     }
+
+
+
+
 }

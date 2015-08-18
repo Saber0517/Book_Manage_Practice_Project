@@ -9,20 +9,22 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
+    <!--<mvc:annotation-driven/>-->
+    <!-- 配置请求过滤器，编码格式设为UTF-8，避免中文乱码-->
 
     <context:component-scan base-package="com.springapp.mvc"/>
     <mvc:interceptors>
         <!-- 使用bean定义一个Interceptor，直接定义在mvc:interceptors根下面的Interceptor将拦截所有的请求 -->
-        
+
         <mvc:interceptor>
             <mvc:mapping path="/**"/>
-            <mvc:exclude-mapping path="/login.action"></mvc:exclude-mapping>
+            <mvc:exclude-mapping path="/WEB-INF/pages/login"></mvc:exclude-mapping>
             <bean class="com.springapp.mvc.filter.SpringMVCInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/"/>
+        <property name="prefix" value="/WEB-INF/pages/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
 

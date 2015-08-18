@@ -24,7 +24,7 @@ public class SpringMVCInterceptor implements HandlerInterceptor {
         if (request.getRequestURL().toString().contains("login")) {
             return true;
         } else if (null == request.getSession().getAttribute("currentUser")) {
-            response.sendRedirect("/login.jsp");
+            response.sendRedirect("/login");
             return false;
         } else {
             return true;

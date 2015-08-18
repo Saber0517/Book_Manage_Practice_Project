@@ -33,10 +33,14 @@ public class ShoppingCarController {
     }
 
     @RequestMapping(value = "/show")
-    public void showTheList(HttpServletResponse httpServletResponse) throws IOException {
-        httpServletResponse.sendRedirect("/bookingList.jsp");
-        return;
+    public String showTheList() {
+        return "redirect:bookingList";
     }
+
+   /* @RequestMapping(value = {"/panel","../panel"})
+    public String showPanel() {
+        return "panel";
+    }*/
 
 
 }
