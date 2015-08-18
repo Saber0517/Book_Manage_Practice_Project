@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" build-on-make="true" name="week7_day2:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="week7_day2.war">
+      <element id="artifact" artifact-name="week7_day2:war exploded" />
+    </root>
+  </artifact>
+</component>
