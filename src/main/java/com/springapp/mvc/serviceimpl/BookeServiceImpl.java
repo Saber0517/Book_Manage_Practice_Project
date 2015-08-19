@@ -13,9 +13,17 @@ public class BookeServiceImpl implements BookService {
 
     private BookDao bookDao;
 
+    public BookDao getBookDao() {
+        return bookDao;
+    }
+
+    public void setBookDao(BookDao bookDao) {
+        this.bookDao = bookDao;
+    }
+
     @Override
     public List<Book> getBookList() {
-        return null;
+        return bookDao.getBookList();
     }
 
     @Override

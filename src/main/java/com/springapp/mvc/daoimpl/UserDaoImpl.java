@@ -9,6 +9,8 @@ import java.util.List;
  * Created by ZHANGJA4 on 8/19/2015.
  */
 public class UserDaoImpl extends BaseDaoImpl implements UserDao {
+
+
     @Override
     public List<User> getUserList() {
         return null;

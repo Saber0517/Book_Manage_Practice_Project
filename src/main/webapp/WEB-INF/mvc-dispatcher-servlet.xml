@@ -38,6 +38,19 @@
     <bean class="com.springapp.mvc.serviceimpl.UserServiceImpl"></bean>
     <bean class="com.springapp.mvc.serviceimpl.BookeServiceImpl"></bean>
 
+    <!--jdbc-->
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+        <!--        <property name="url" value="jdbc:oracle:thin:@ITA-031-W7.corp.oocl.com:1521:XE"></property>
+                <property name="driverClassName" value="oracle.jdbc.OracleDriver"></property>
+                <property name="username" value="james"></property>
+                <property name="password" value="123"></property>-->
+
+        <property name="url" value="jdbc:oracle:thin:@10.211.55.4:1521:XE"></property>
+        <property name="driverClassName" value="oracle.jdbc.OracleDriver"></property>
+        <property name="username" value="ITA"></property>
+        <property name="password" value="sys"></property>
+    </bean>
+
     <!--<bean name="/CommmonController" class="com.springapp.mvc.CommmonController">
 
     </bean>-->

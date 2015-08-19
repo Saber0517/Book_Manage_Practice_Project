@@ -15,6 +15,13 @@ import java.util.List;
 @Controller
 public class PanelController {
 
+
+    @RequestMapping(value = {"/panel"})
+    public String panel() {
+        return "panel";
+    }
+
+
     @RequestMapping(value = {"/userList"})
     @ResponseBody
     public List<User> getUserList(HttpServletResponse response) {
