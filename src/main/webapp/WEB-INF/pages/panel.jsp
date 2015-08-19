@@ -25,6 +25,8 @@
     <script type="text/javascript">
         $(document).ready(function () {
 
+
+
             $("tr").on("click", function () {
                 $("#list").modal();
                 var tr = $(this).closest('tr')[0];
