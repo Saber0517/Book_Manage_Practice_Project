@@ -23,7 +23,7 @@
             <bean class="com.springapp.mvc.filter.SpringMVCInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
-
+    <mvc:resources location="/WEB-INF/js/" mapping="/resource/**"></mvc:resources>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/pages/"/>
