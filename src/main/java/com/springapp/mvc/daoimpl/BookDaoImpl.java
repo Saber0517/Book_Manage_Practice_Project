@@ -62,8 +62,23 @@ public class BookDaoImpl extends BaseDaoImpl implements BookDao {
     }
 
     @Override
-    public String changeBookInfo(String bookId) {
-        return null;
+    public Integer changeBookInfo(Book book) {
+        String sql = "UPDATE " + tableName + " SET BOOKNAME=?,PRICE=? WHERE BOOKID=?";
+        Connection con = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        int result = 0;
+        try {
+            con = this.getConnection();
+            pst = con.prepareStatement(sql);
+            pst.setString(1, book.getBookName());
+            pst.setDouble(2, book.getPrice());
+            result = pst.executeUpdate();
+        } catch (SQLException e) {
+            this.free(con, pst, rs);
+            e.printStackTrace();
+        }
+        return result;
     }
 
     @Override

@@ -41,7 +41,14 @@ public class BookController {
         List<Book> bookList = bookService.getBookList();
         System.out.printf("bookList :" + bookList);
         return bookList;
-
     }
+
+    @RequestMapping(value = {"/changeBook"})
+    @ResponseBody
+    public String getUserList(Book book) {
+        //①表示响应的内容区数据的媒体类型为html格式，且编码为utf-8(客户端应该以utf-8解码)
+        return bookService.changeBookInfo(book);
+    }
+
 
 }

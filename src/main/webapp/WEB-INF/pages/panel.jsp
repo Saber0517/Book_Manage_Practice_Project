@@ -5,7 +5,6 @@
   Time: 下午8:49
   To change this template use File | Settings | File Templates.
 --%>
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -21,39 +20,76 @@
 
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script type="text/css">
+        body {
+            margin: 80px;
+        }
 
+        .table {
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </script>
     <script type="text/javascript">
         $(document).ready(function () {
 
+            $.getJSON("/bookList", function (json) {
+//                var json = $.parseJSON(msg);
+                console.log("Data Saved: " + json);
+                $.each(json, function (i, value) {
+                    console.log("i :" + i + " value:" + value);
+                    var tr = $('<tr></tr>');
+                    tr.append('<th scope="row">' + i + '</th>');
+                    tr.append('<td>' + value.bookId + '</td>');
+                    tr.append('<td>' + value.bookName + '</td>');
+                    tr.append('<td>' + value.price + '</td>');
+//                    tr.append('<td><button type="button" data-loading-text="Loading..." class="btn btn-primary"autocomplete="off">showDetail</button></td>');
+                    $("tbody").append(tr);
+                });
+                bindingBtn();
 
-            $("tr").on("click", function () {
-                $("#list").modal();
-                var tr = $(this).closest('tr')[0];
-                $(tr).addClass("selected");
-                var foodID = tr.children[0].innerHTML;
-                var foodName = tr.children[1].innerHTML;
-                $("#name").val(foodID);
-                $("#pwd").val(foodName);
-//                alert($(this).text);
             });
-            $("#save").on("click", function () {
 
-                $("tr[class=selected]").children[0].val($("#name").val());
-                $("tr[class=selected]").children[1].val($("#pwd").val());
-//                tr.children[1].innerHTML = $("#pwd").val();
-                $("#list").modal('hide');
+            var bindingBtn = function () {
+                $("tr").on("click", function () {
+                    $("#list").modal();
+                    var tr = $(this).closest('tr')[0];
+                    $(tr).addClass("selected");
+                    var bookID = tr.childNodes[1].innerHTML;
+                    var bookName = tr.childNodes[2].innerHTML;
+                    var bookPrice = tr.childNodes[3].innerHTML;
+                    $("#bookName").val(bookName);
+                    $("#bookPrice").val(bookPrice);
+                });
+            };
+
+            $("#list").on("hidden.bs.modal", function (e) {
                 $(".selected").removeClass();
             });
+
+
+            $("#save").on("click", function () {
+                console.log($("#bookName").text);
+                console.log($("#bookPrice").text);
+                $("#list").modal('hide');
+                $.get("/changeBook", {name: $("#bookName").text, time: $("#bookPrice").text},
+                        function (data) {
+                            alert("Data Loaded: " + data);
+                        });
+            });
+
+
             $("#testJson").on("click", function () {
                 $.getJSON("/userList", {}, function (data) {
                     $("#modal").modal();
-//                    alert(data);
+                    console.log(data);
                 })
             });
+
             $("#bookList").on("click", function () {
                 $.getJSON("/bookList", {}, function (data) {
                     $("#modal").modal();
-//                    alert(data);
+                    console.log(data);
                 })
             });
         });
@@ -80,8 +116,8 @@
                 <h4 class="modal-title" id="myModalLabel">Modal title</h4>
             </div>
             <div class="modal-body">
-                <input id="name" type="text">
-                <input id="pwd" type="text">
+                <input id="bookName" type="text">
+                <input id="bookPrice" type="text">
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -94,47 +130,13 @@
     <thead>
     <tr>
         <th>#</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Username</th>
+        <th>BookId</th>
+        <th>BookName</th>
+        <th>Price</th>
     </tr>
     </thead>
     <tbody>
     <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-        <td>
-            <button type="button" data-loading-text="Loading..." class="btn btn-primary"
-                    autocomplete="off">
-                showDetail
-            </button>
-        </td>
-    </tr>
-    <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-        <td>
-            <button type="button" data-loading-text="Loading..." class="btn btn-primary"
-                    autocomplete="off">
-                add to car
-            </button>
-        </td>
-    </tr>
-    <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-        <td>
-            <button type="button" data-loading-text="Loading..." class="btn btn-primary"
-                    autocomplete="off">
-                add to car
-            </button>
-        </td>
     </tr>
     </tbody>
 </table>

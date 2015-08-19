@@ -37,8 +37,8 @@ public class BookeServiceImpl implements BookService {
     }
 
     @Override
-    public String changeBookInfo(String bookId) {
-        return null;
+    public String changeBookInfo(Book book) {
+        return ""+bookDao.changeBookInfo(book);
     }
 
     @Override

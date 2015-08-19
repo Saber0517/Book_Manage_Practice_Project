@@ -14,7 +14,8 @@ public interface BookService {
 
     public String addBook(Book newBook);
 
-    public String changeBookInfo(String bookId);
+
+    String changeBookInfo(Book book);
 
     public String deleteBook();
 }

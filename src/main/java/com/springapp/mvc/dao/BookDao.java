@@ -15,7 +15,7 @@ public interface BookDao extends BaseDao {
 
     public String addBook(Book newBook);
 
-    public String changeBookInfo(String bookId);
+    public Integer changeBookInfo(Book book);
 
     public String deleteBook();
 }
