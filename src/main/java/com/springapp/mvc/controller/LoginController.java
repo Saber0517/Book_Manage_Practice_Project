@@ -24,7 +24,7 @@ import java.util.LinkedList;
 public class LoginController {
 
     //    @ModelAttribute(value = "currentUser")
-    @RequestMapping(value = {"login.actoin"}, produces = {"charset=UTF-8"})
+    @RequestMapping(value = {"login.actoin"})
     public String requarLogin(User user, Model model, HttpServletResponse httpServletResponse) throws ServletException, IOException {
         System.out.println(user.getUname());
         System.out.println(user.getPwd());

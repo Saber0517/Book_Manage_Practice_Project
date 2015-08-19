@@ -21,7 +21,7 @@ import java.util.List;
 @SessionAttributes("shoppingList")
 public class ShoppingCarController {
 
-    @RequestMapping(value = {"/add/foodId/{foodId}/foodPrice/{foodPrice}"}, produces = {"charset=UTF-8"})
+    @RequestMapping(value = {"/add/foodId/{foodId}/foodPrice/{foodPrice}"})
     public List<Food> addFoodIntoShoppingCar(@ModelAttribute("shoppingList") List<Food> shoppingList, @PathVariable String foodId, @PathVariable String foodPrice, Model model) {
         Food food = new Food();
         food.setFoodId(foodId);
