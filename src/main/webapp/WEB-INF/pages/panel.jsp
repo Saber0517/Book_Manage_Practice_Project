@@ -26,7 +26,6 @@
         $(document).ready(function () {
 
 
-
             $("tr").on("click", function () {
                 $("#list").modal();
                 var tr = $(this).closest('tr')[0];
@@ -51,12 +50,21 @@
 //                    alert(data);
                 })
             });
+            $("#bookList").on("click", function () {
+                $.getJSON("/bookList", {}, function (data) {
+                    $("#modal").modal();
+//                    alert(data);
+                })
+            });
         });
 
     </script>
 </head>
 <body>
 <!-- Large modal -->
+<button id="bookList" type="button" class="btn btn-primary">
+    testBookList
+</button>
 <button id="testJson" type="button" class="btn btn-primary">
     testJson
 </button>

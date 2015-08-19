@@ -1,6 +1,7 @@
 package com.springapp.mvc.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created by ZHANGJA4 on 8/18/2015.
@@ -9,9 +10,14 @@ public class User implements Serializable {
     String id;
     String uname;
     String pwd;
+//    @Min(value=12,message={"age,error"})
+    String age;
+
+    Date birth;
 
     @Override
     public boolean equals(Object o) {
+
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
@@ -19,7 +25,8 @@ public class User implements Serializable {
 
         if (id != null ? !id.equals(user.id) : user.id != null) return false;
         if (uname != null ? !uname.equals(user.uname) : user.uname != null) return false;
-        return !(pwd != null ? !pwd.equals(user.pwd) : user.pwd != null);
+        if (pwd != null ? !pwd.equals(user.pwd) : user.pwd != null) return false;
+        return !(age != null ? !age.equals(user.age) : user.age != null);
 
     }
 
@@ -28,7 +35,16 @@ public class User implements Serializable {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (uname != null ? uname.hashCode() : 0);
         result = 31 * result + (pwd != null ? pwd.hashCode() : 0);
+        result = 31 * result + (age != null ? age.hashCode() : 0);
         return result;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
     }
 
     public String getUname() {

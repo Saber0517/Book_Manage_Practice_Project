@@ -7,13 +7,13 @@
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc.xsd
         http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context.xsd">
+        http://www.springframework.org/schema/context/spring-context.xsd" default-autowire="byType">
 
 
     <!-- 配置请求过滤器，编码格式设为UTF-8，避免中文乱码-->
 
     <context:component-scan base-package="com.springapp.mvc"/>
-    <mvc:annotation-driven/>
+    <mvc:annotation-driven></mvc:annotation-driven>
     <mvc:interceptors>
         <!-- 使用bean定义一个Interceptor，直接定义在mvc:interceptors根下面的Interceptor将拦截所有的请求 -->
 
@@ -29,11 +29,26 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
+    <!--IOC注入-->
+    <!--DAO-->
+    <bean class="com.springapp.mvc.daoimpl.BookDaoImpl"></bean>
+    <bean class="com.springapp.mvc.daoimpl.UserDaoImpl"></bean>
+
+    <!--Service-->
+    <bean class="com.springapp.mvc.serviceimpl.UserServiceImpl"></bean>
+    <bean class="com.springapp.mvc.serviceimpl.BookeServiceImpl"></bean>
+
     <!--<bean name="/CommmonController" class="com.springapp.mvc.CommmonController">
 
     </bean>-->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-
     </bean>
+    <!--<bean id="convertion" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">-->
+    <!--<property name="formatters">-->
+    <!--<set>-->
+    <!--<bean class="com.springapp.mvc.formate.Data2StringFormater"></bean>-->
+    <!--</set>-->
 
+    <!--</property>-->
+    <!--</bean>-->
 </beans>

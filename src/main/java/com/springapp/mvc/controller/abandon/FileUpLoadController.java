@@ -1,4 +1,4 @@
-package com.springapp.mvc.controller;
+package com.springapp.mvc.controller.abandon;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,4 +1,4 @@
-package com.springapp.mvc.controller;
+package com.springapp.mvc.controller.abandon;
 
 import com.springapp.mvc.entity.Food;
 
