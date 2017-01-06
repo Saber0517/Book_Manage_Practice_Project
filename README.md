@@ -1,1 +1,1 @@
-# This is a study draft to me to learn spring framework
+# This is a study draft for me to learn spring framework
